@@ -25,6 +25,7 @@ android {
 }
 
 dependencies {
+    compile 'com.jakewharton:butterknife:7.0.1'
     testCompile 'org.robolectric:robolectric:3.0'
     testCompile 'org.robolectric:shadows-support-v4:3.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])

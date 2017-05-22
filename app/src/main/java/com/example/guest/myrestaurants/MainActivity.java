@@ -14,21 +14,22 @@ import android.graphics.Typeface;
 
 import org.w3c.dom.Text;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    public static final String TAG = MainActivity.class.getSimpleName();
-    private Button mFindRestaurantButton;
-    private EditText mLocationEditText;
-    private TextView mAppNameTextView;
+    @Bind (R.id.findRestaurantsButton) Button mFindRestaurantButton;
+    @Bind (R.id.locationEditText) EditText mLocationEditText;
+    @Bind(R.id.appNameTextView) TextView mAppNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAppNameTextView = (TextView) findViewById(R.id.appNameTextView);
-            Typeface solo = Typeface.createFromAsset(getAssets(), "fonts/champ2.ttf");
-            mAppNameTextView.setTypeface(solo);
-        mLocationEditText = (EditText) findViewById(R.id.locationEditText);
-        mFindRestaurantButton = (Button) findViewById(R.id.findRestaurantsButton);
+        ButterKnife.bind(this);
+
+        Typeface solo = Typeface.createFromAsset(getAssets(), "fonts/champ2.ttf");
+        mAppNameTextView.setTypeface(solo);
 
         mFindRestaurantButton.setOnClickListener(new View.OnClickListener() {
             @Override
