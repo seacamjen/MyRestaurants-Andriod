@@ -3,6 +3,8 @@ package com.example.guest.myrestaurants;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 
+import com.example.guest.myrestaurants.ui.RestaurantsActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 

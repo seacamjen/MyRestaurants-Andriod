@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.widget.TextView;
 
-import com.example.guest.myrestaurants.MainActivity;
-import com.example.guest.myrestaurants.R;
+import com.example.guest.myrestaurants.ui.MainActivity;
+import com.example.guest.myrestaurants.ui.RestaurantsActivity;
 
 import org.junit.Before;
 import org.junit.Test;

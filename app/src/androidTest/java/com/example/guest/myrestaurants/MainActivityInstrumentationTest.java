@@ -2,7 +2,7 @@ package com.example.guest.myrestaurants;
 
 import android.support.test.rule.ActivityTestRule;
 
-import com.example.guest.myrestaurants.MainActivity;
+import com.example.guest.myrestaurants.ui.MainActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
