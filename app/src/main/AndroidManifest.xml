@@ -24,7 +24,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.guest.myrestaurants.ui.MainActivity"></meta-data>
         </activity>
-        <activity android:name=".ui.RestaurantDetailActivity"></activity>
+        <activity
+            android:name=".ui.RestaurantDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.guest.myrestaurants.ui.RestaurantDetailActivity">
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>
