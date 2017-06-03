@@ -1,6 +1,8 @@
 package com.example.guest.myrestaurants.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.guest.myrestaurants.Adapters.RestaurantListAdapter;
+import com.example.guest.myrestaurants.Constants;
 import com.example.guest.myrestaurants.R;
 import com.example.guest.myrestaurants.models.Restaurant;
 import com.example.guest.myrestaurants.services.YelpService;
@@ -25,6 +28,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class RestaurantsActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
     public static final String TAG = RestaurantsActivity.class.getSimpleName();
 
 //    @Bind(R.id.locationTextView) TextView mLocationTextView;
@@ -46,7 +51,14 @@ public class RestaurantsActivity extends AppCompatActivity {
 
 //        mLocationTextView.setText("Here are all the Restaurants near: " + location);
 
-        getRestaurants(location);
+//        getRestaurants(location);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+
+        if (mRecentAddress != null) {
+            getRestaurants(mRecentAddress);
+        }
     }
 
     private void getRestaurants (String location) {
@@ -68,7 +80,8 @@ public class RestaurantsActivity extends AppCompatActivity {
                     public void run() {
                         mAdapter = new RestaurantListAdapter(getApplicationContext(), mRestaurants);
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantsActivity.this);
+                        RecyclerView.LayoutManager layoutManager =
+                                new LinearLayoutManager(RestaurantsActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }
