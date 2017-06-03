@@ -22,15 +22,14 @@
         <activity android:name=".ui.RestaurantsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.guest.myrestaurants.ui.MainActivity"></meta-data>
+                android:value="com.example.guest.myrestaurants.ui.MainActivity" />
         </activity>
-        <activity
-            android:name=".ui.RestaurantDetailActivity">
+        <activity android:name=".ui.RestaurantDetailActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.guest.myrestaurants.ui.RestaurantDetailActivity">
-            </meta-data>
+                android:value="com.example.guest.myrestaurants.ui.RestaurantDetailActivity"></meta-data>
         </activity>
+        <activity android:name=".ui.SavedRestaurantListActivity"></activity>
     </application>
 
 </manifest>
