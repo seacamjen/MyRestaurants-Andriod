@@ -90,11 +90,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSearchedLocationReference.push().setValue(location);
     }
 
-    @Override
-    protected void onDestory() {
-        super.onDestroy();
-        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
-    }
+//    @Override
+//    protected void onDestory() {
+//        super.onDestroy();
+//        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
+//    }
 
 //    private void addToSharedPreferences(String location) {
 //        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
