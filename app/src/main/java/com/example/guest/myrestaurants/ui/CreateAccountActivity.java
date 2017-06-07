@@ -1,5 +1,6 @@
 package com.example.guest.myrestaurants.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     public static final String TAG = CreateAccountActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private ProgressDialog mAuthProgressDialog;
 
     @Bind(R.id.createUserButton) Button mCreateUserButton;
     @Bind(R.id.nameEditText) EditText mNameEditText;
@@ -45,6 +47,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mLoginTextView.setOnClickListener(this);
         mCreateUserButton.setOnClickListener(this);
         createAuthStateListener();
+        createAuthProgressDialog();
+    }
+
+    private void createAuthProgressDialog() {
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading...");
+        mAuthProgressDialog.setMessage("Authentication with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
     }
 
     @Override
@@ -87,10 +97,15 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         boolean validPassword = isValidPassword(password, confirmPassword);
         if (!validEmail || !validName || !validPassword) return;
 
+        mAuthProgressDialog.show();
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        mAuthProgressDialog.dismiss();
+
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Authentication successful");
                         } else {
