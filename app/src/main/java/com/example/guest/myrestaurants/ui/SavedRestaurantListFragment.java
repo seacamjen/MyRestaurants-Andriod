@@ -48,7 +48,8 @@ public class SavedRestaurantListFragment extends Fragment implements OnStartDrag
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        Query query = FirebaseDatabase.getInstance()
+        Query query = FirebaseDatabase
+                .getInstance()
                 .getReference(Constants.FIREBASE_CHILD_RESTAURANTS)
                 .child(uid)
                 .orderByChild(Constants.FIREBASE_QUERY_INDEX);
@@ -81,7 +82,6 @@ public class SavedRestaurantListFragment extends Fragment implements OnStartDrag
     }
 
     @Override
-    //method is now public
     public void onDestroy() {
         super.onDestroy();
         mFirebaseAdapter.cleanup();
