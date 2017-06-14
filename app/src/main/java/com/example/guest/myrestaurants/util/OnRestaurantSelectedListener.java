@@ -5,5 +5,5 @@ import com.example.guest.myrestaurants.models.Restaurant;
 import java.util.ArrayList;
 
 public interface OnRestaurantSelectedListener {
-    public void onRestaurantSelected(Integer position, ArrayList<Restaurant> restaurants);
+    public void onRestaurantSelected(Integer position, ArrayList<Restaurant> restaurants, String source);
 }
