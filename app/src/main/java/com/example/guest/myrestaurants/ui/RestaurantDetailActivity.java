@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 public class RestaurantDetailActivity extends AppCompatActivity {
     @Bind(R.id.viewPager) ViewPager mViewPager;
     private RestaurantPagerAdapter adapterViewPager;
+    private String mSource;
     ArrayList<Restaurant> mRestaurants = new ArrayList<>();
 
     @Override
@@ -30,7 +31,9 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         mRestaurants = Parcels.unwrap(getIntent().getParcelableExtra(Constants.EXTRA_KEY_RESTAURANTS));
         int startingPostion = getIntent().getIntExtra(Constants.EXTRA_KEY_POSITION, 0);
 
-        adapterViewPager = new RestaurantPagerAdapter(getSupportFragmentManager(), mRestaurants);
+        mSource = getIntent().getStringExtra(Constants.KEY_SOURCE);
+
+        adapterViewPager = new RestaurantPagerAdapter(getSupportFragmentManager(), mRestaurants, mSource);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPostion);
     }
